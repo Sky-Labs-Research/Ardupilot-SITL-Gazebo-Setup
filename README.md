@@ -19,9 +19,7 @@ This set of instructions guides you through the installation of Ardupilot and So
    - Test Ardupilot SITL
       ```bash
       cd ~/ardupilot/ArduCopter
-      # Wipe EEPROM
       sim_vehicle.py -w
-      # Test
       sim_vehicle.py --console –map
       ```
 3. Install Gazebo:
@@ -31,7 +29,6 @@ This set of instructions guides you through the installation of Ardupilot and So
       ```
    - Test Gazebo
       ```bash
-      # Check Gazebo
       gz sim -v4 -r shapes.sdf
       ```
 4. Install Ardupilot + Gazebo:
