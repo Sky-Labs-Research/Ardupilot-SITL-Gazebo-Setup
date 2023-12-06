@@ -10,14 +10,46 @@ This set of instructions guides you through the installation of Ardupilot and So
 
 **Instructions:**
 1. Install Ardupilot & SITL:
-   - `git clone https://github.com/Sky-Labs-Research/Ardupilot-SITL-Gazebo-Setup.git`
-   - `cd Ardupilot-SITL-Gazebo-Setup` 
-   - `./setup_ardupilot.sh`
+   - Setup Ardupilot & SITL
+      ```bash
+      git clone https://github.com/Sky-Labs-Research/Ardupilot-SITL-Gazebo-Setup.git
+      cd Ardupilot-SITL-Gazebo-Setup
+      ./setup_ardupilot.sh
+      ```
    - Test Ardupilot SITL
-   - 	`./setup_gazebo`
+      ```bash
+      cd ~/ardupilot/ArduCopter
+      # Wipe EEPROM
+      sim_vehicle.py -w
+      # Test
+      sim_vehicle.py --console –map
+      ```
+3. Install Gazebo:
+   - Setup Gazebo
+      ```bash
+      ./setup_gazebo
+      ```
    - Test Gazebo
-   - 	`./setup_ardupilot_gazebo`
+      ```bash
+      # Check Gazebo
+      gz sim -v4 -r shapes.sdf
+      ```
+4. Install Ardupilot + Gazebo:
+   - Setup Ardupilot Gazebo
+      ```bash
+      ./setup_ardupilot_gazebo
+      ```
    - Test Ardupilot and Gazebo
+      ```bash
+      # In one console
+      gz sim -v4 -r iris_runway.sdf
+      # In another console (CTRL+T Opens a new console tab)
+      sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON --map --console
+      # Arm and Take off
+      # STABILIZE> mode guided
+      # GUIDED> arm throttle
+      # GUIDED> takeoff 5
+      ```
 
 **References:**
 - Ardupilot setup: [Building Setup for Linux](https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux)
@@ -84,7 +116,9 @@ This set of instructions guides you through the installation of Ardupilot and So
 5. **Test Gazebo SITL Plugin:**
    - Run the following commands:
      ```bash
+     # In one console
      gz sim -v4 -r iris_runway.sdf
+     # In another console (CTRL+T Opens a new console tab)
      sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON --map --console
      # Arm and Take off
      # STABILIZE> mode guided
