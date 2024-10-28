@@ -18,5 +18,8 @@ Tools/environment_install/install-prereqs-ubuntu.sh -y || { echo "Error: Failed 
 # Update the environment
 . ~/.profile || { echo "Error: Failed to update environment."; exit 1; }
 
+# Navigate to our script directory
+cd .. || { echo "Error: Failed to navigate to directory."; exit 1; }
+
 # Print a message indicating successful completion
 echo "ArduPilot setup completed successfully!"
