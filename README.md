@@ -73,6 +73,13 @@ This set of instructions guides you through the installation of Ardupilot and So
       # GUIDED> takeoff 5
       ```
 
+**Common Issues:**
+
+- `sim_vehicle.py: command not found` : Try to refresh your terminal profile with `. ~/.profile `
+- `gz-sim Unable to find or download file` : 
+gazebo is unable to find the installed worlds and models from ardupilot_gazebo. Ensure you exported the paths to bashrc and refresh your terminal environment with `source ~/.bashrc`
+
+
 **References:**
 - Ardupilot setup: [Building Setup for Linux](https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux)
 - Setting up SITL on Linux: [Ardupilot Documentation](https://ardupilot.org/dev/docs/setting-up-sitl-on-linux.html#setting-up-sitl-on-linux)
