@@ -28,11 +28,12 @@ cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo || { echo "Error: Failed to run CMake
 make -j4 || { echo "Error: Failed to build the project."; exit 1; }
 
 # Set environment variables
-export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/gz_ws/src/ardupilot_gazebo/build:$GZ_SIM_SYSTEM_PLUGIN_PATH
-export GZ_SIM_RESOURCE_PATH=$HOME/gz_ws/src/ardupilot_gazebo/models:$HOME/gz_ws/src/ardupilot_gazebo/worlds:$GZ_SIM_RESOURCE_PATH
+echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}' >> ~/.bashrc
+echo 'export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}' >> ~/.bashrc
 
 # Update the environment
 . ~/.profile || { echo "Error: Failed to update environment."; exit 1; }
+source ~/.bashrc || { echo "Error: Failed to update environment."; exit 1; }
 
 # Print a message indicating successful completion
 echo "ArduPilot Gazebo setup completed successfully!"

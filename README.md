@@ -16,10 +16,13 @@ This set of instructions guides you through the installation of Ardupilot and So
       git clone https://github.com/Sky-Labs-Research/Ardupilot-SITL-Gazebo-Setup.git
       cd Ardupilot-SITL-Gazebo-Setup
       . ./setup_ardupilot.sh
+      . ~/.profile 
       ```
    - Test Ardupilot SITL
       ```bash
-      cd /ardupilot/ArduCopter
+      # In another console (CTRL+T Opens a new console tab)
+      # Navigate to Ardupilot-SITL-Gazebo-Setup/ardupilot/ArduCopter
+      cd ArduCopter/
       # Wipe EEPROM
       sim_vehicle.py -w
       # Test
@@ -43,10 +46,16 @@ This set of instructions guides you through the installation of Ardupilot and So
    - Setup Ardupilot Gazebo for garden
       ```bash
       . ./setup_ardupilot_gazebo_garden.sh
+      echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}' >> ~/.bashrc
+      echo 'export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}' >> ~/.bashrc
+      source ~/.bashrc
       ```
       or harmonic
       ```bash
       . ./setup_ardupilot_gazebo_harmonic.sh
+      echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}' >> ~/.bashrc
+      echo 'export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}' >> ~/.bashrc
+      source ~/.bashrc
       ```
    - Test Ardupilot and Gazebo
       ```bash
