@@ -7,6 +7,7 @@ This set of instructions guides you through the installation of Ardupilot and So
 
 - Ubuntu 20.04 or 22.04
 - Graphics card recommended
+- git `sudo apt install git`
 
 **Instructions:**
 1. Install Ardupilot & SITL:
@@ -18,21 +19,21 @@ This set of instructions guides you through the installation of Ardupilot and So
       ```
    - Test Ardupilot SITL
       ```bash
-      cd ~/ardupilot/ArduCopter
+      cd /ardupilot/ArduCopter
       # Wipe EEPROM
       sim_vehicle.py -w
       # Test
       sim_vehicle.py --console --map
       ```
-3. Install Gazebo [Garden/7 or Harmonic/8]:
+3. Install Gazebo [Garden/7 or Harmonic/8, see [here](https://gazebosim.org/docs/latest/getstarted/) for which version is compatible with your OS]:
    - Setup Gazebo
       for Garden
       ```bash
-      . ./setup_gazebo_garden
+      . ./setup_gazebo_garden.sh
       ```
       for Harmonic
       ```bash
-      . ./setup_gazebo_harmonic
+      . ./setup_gazebo_harmonic.sh
       ```
    - Test Gazebo
       ```bash
@@ -41,11 +42,11 @@ This set of instructions guides you through the installation of Ardupilot and So
 4. Install Ardupilot + Gazebo:
    - Setup Ardupilot Gazebo for garden
       ```bash
-      . ./setup_ardupilot_gazebo_garden
+      . ./setup_ardupilot_gazebo_garden.sh
       ```
       or harmonic
       ```bash
-      . ./setup_ardupilot_gazebo_harmonic
+      . ./setup_ardupilot_gazebo_harmonic.sh
       ```
    - Test Ardupilot and Gazebo
       ```bash
