@@ -14,7 +14,7 @@ cd ~
 sudo rm -rf ardupilot_gazebo || { echo "Error: Failed remove old Ardupilot Gazebo folder."; exit 1; }
 
 # Clone the ArduPilot Gazebo repository
-git clone https://github.com/ArduPilot/ardupilot_gazebo || { echo "Error: Failed to clone ArduPilot Gazebo repository."; exit 1; }
+git clone https://github.com/ArduPilot/ardupilot_gazebo || { echo "Error: Failed to clone ArduPilot Gazebo repository. Try removing it with "sudo rm -r ~/ardupilot_gazebo/""; exit 1; }
 
 # Navigate into the ardupilot_gazebo directory
 cd ardupilot_gazebo || { echo: "Error: Failed to navigate to ardupilot_gazebo directory."; exit 1; }
@@ -23,13 +23,14 @@ cd ardupilot_gazebo || { echo: "Error: Failed to navigate to ardupilot_gazebo di
 mkdir -p build && cd build || { echo "Error: Failed to create or navigate to the build directory."; exit 1; }
 
 # Build the project
-export GZ_VERSION = harmonic
+echo 'export GZ_VERSION=harmonic' || { echo "Error: Failed to set the gazebo version."; exit 1; }
+source ~/.bashrc || { echo "Error: Failed to update environment."; exit 1; }
 cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo || { echo "Error: Failed to run CMake."; exit 1; }
 make -j4 || { echo "Error: Failed to build the project."; exit 1; }
 
 # Set environment variables
-echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}' >> ~/.bashrc
-echo 'export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}' >> ~/.bashrc
+echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}' >> ~/.bashrc || { echo "Error: Failed to set env variables."; exit 1; }
+echo 'export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}' >> ~/.bashrc || { echo "Error: Failed to set env variables."; exit 1; }
 
 # Update the environment
 . ~/.profile || { echo "Error: Failed to update environment."; exit 1; }

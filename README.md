@@ -45,6 +45,8 @@ This set of instructions guides you through the installation of Ardupilot and So
 4. Install Ardupilot + Gazebo:
    - Setup Ardupilot Gazebo for garden
       ```bash
+      echo 'export GZ_VERSION=garden' 
+      source ~/.bashrc
       . ./setup_ardupilot_gazebo_garden.sh
       echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}' >> ~/.bashrc
       echo 'export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}' >> ~/.bashrc
@@ -52,6 +54,8 @@ This set of instructions guides you through the installation of Ardupilot and So
       ```
       or harmonic
       ```bash
+      echo 'export GZ_VERSION=harmonic'
+      source ~/.bashrc
       . ./setup_ardupilot_gazebo_harmonic.sh
       echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}' >> ~/.bashrc
       echo 'export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}' >> ~/.bashrc
