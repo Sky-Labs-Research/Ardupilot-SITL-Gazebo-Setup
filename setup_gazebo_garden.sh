@@ -3,6 +3,9 @@
 # Update package list
 sudo apt-get update || { echo "Error: Failed to update package list."; exit 1; }
 
+# Remove old gazebo
+sudo apt remove gz-garden -y && sudo apt autoremove -y || { echo "Error: Failed to remove old gazebo harmonic";exit 1; }
+
 # Install lsb-release, wget, and gnupg
 sudo apt-get install lsb-release wget gnupg -y || { echo "Error: Failed to install required packages."; exit 1; }
 

@@ -14,27 +14,38 @@ This set of instructions guides you through the installation of Ardupilot and So
       ```bash
       git clone https://github.com/Sky-Labs-Research/Ardupilot-SITL-Gazebo-Setup.git
       cd Ardupilot-SITL-Gazebo-Setup
-      ./setup_ardupilot.sh
+      . ./setup_ardupilot.sh
       ```
    - Test Ardupilot SITL
       ```bash
       cd ~/ardupilot/ArduCopter
+      # Wipe EEPROM
       sim_vehicle.py -w
-      sim_vehicle.py --console –map
+      # Test
+      sim_vehicle.py --console --map
       ```
-3. Install Gazebo:
+3. Install Gazebo [Garden/7 or Harmonic/8]:
    - Setup Gazebo
+      for Garden
       ```bash
-      ./setup_gazebo
+      . ./setup_gazebo_garden
+      ```
+      for Harmonic
+      ```bash
+      . ./setup_gazebo_harmonic
       ```
    - Test Gazebo
       ```bash
       gz sim -v4 -r shapes.sdf
       ```
 4. Install Ardupilot + Gazebo:
-   - Setup Ardupilot Gazebo
+   - Setup Ardupilot Gazebo for garden
       ```bash
-      ./setup_ardupilot_gazebo
+      . ./setup_ardupilot_gazebo_garden
+      ```
+      or harmonic
+      ```bash
+      . ./setup_ardupilot_gazebo_harmonic
       ```
    - Test Ardupilot and Gazebo
       ```bash
@@ -56,72 +67,7 @@ This set of instructions guides you through the installation of Ardupilot and So
 
 **No Script (Manual) Instructions:**
 
-1. **Install Ardupilot & SITL:**
-   - Run the following commands:
-     ```bash
-     sudo apt-get update
-     sudo apt-get install git
-     sudo apt-get install gitk git-gui
-     git clone --recurse-submodules https://github.com/ArduPilot/ardupilot.git
-     cd ardupilot
-     Tools/environment_install/install-prereqs-ubuntu.sh -y
-     . ~/.profile
-     ```
-
-2. **Setting up SITL:**
-   - Run the following commands:
-     ```bash
-     cd ~/ardupilot/ArduCopter
-     # Wipe EEPROM
-     sim_vehicle.py -w
-     # Test
-     sim_vehicle.py --console –map
-     ```
-
-3. **Install Gazebo:**
-   - Run the following commands:
-     ```bash
-     sudo apt-get update
-     sudo apt-get install lsb-release wget gnupg
-     sudo wget https://packages.osrfoundation.org/gazebo.gpg -O /usr/share/keyrings/pkgs-osrf-archive-keyring.gpg
-     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-osrf-archive-keyring.gpg] http://packages.osrfoundation.org/gazebo/ubuntu-stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/gazebo-stable.list > /dev/null
-     sudo apt-get update
-     sudo apt-get install gz-garden
-     . ~/.profile
-     ```
-
-4. **Setup Ardupilot with Gazebo:**
-   - Run the following commands:
-     ```bash
-     # Check Gazebo
-     gz sim -v4 -r shapes.sdf
-     sudo apt update
-     sudo apt install libgz-sim7-dev rapidjson-dev -y
-     cd ~
-     git clone https://github.com/ArduPilot/ardupilot_gazebo
-     cd ardupilot_gazebo
-     mkdir build && cd build
-     cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo
-     make -j4
-     export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:$GZ_SIM_SYSTEM_PLUGIN_PATH
-     export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:$GZ_SIM_RESOURCE_PATH
-     echo 'export GZ_SIM_SYSTEM_PLUGIN_PATH=$HOME/ardupilot_gazebo/build:${GZ_SIM_SYSTEM_PLUGIN_PATH}' >> ~/.bashrc
-     echo 'export GZ_SIM_RESOURCE_PATH=$HOME/ardupilot_gazebo/models:$HOME/ardupilot_gazebo/worlds:${GZ_SIM_RESOURCE_PATH}' >> ~/.bashrc
-     . ~/.profile
-     ```
-
-5. **Test Gazebo SITL Plugin:**
-   - Run the following commands:
-     ```bash
-     # In one console
-     gz sim -v4 -r iris_runway.sdf
-     # In another console (CTRL+T Opens a new console tab)
-     sim_vehicle.py -v ArduCopter -f gazebo-iris --model JSON --map --console
-     # Arm and Take off
-     # STABILIZE> mode guided
-     # GUIDED> arm throttle
-     # GUIDED> takeoff 5
-     ```
+Please view each .sh script for line by line comments of each command.
 
 
 

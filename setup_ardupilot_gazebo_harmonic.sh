@@ -5,9 +5,13 @@ sudo apt update || { echo "Error: Failed to update package list."; exit 1; }
 
 # Install libgz-sim7-dev and rapidjson-dev
 sudo apt install libgz-sim7-dev rapidjson-dev -y || { echo "Error: Failed to install required packages."; exit 1; }
+sudo apt install libopencv-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y || { echo "Error: Failed to install required packages."; exit 1; }
 
 # Create and navigate to the workspace directory
 cd ~
+
+# Remove old Ardupilot_gazebo folder
+sudo rm -rf ardupilot_gazebo || { echo "Error: Failed remove old Ardupilot Gazebo folder."; exit 1; }
 
 # Clone the ArduPilot Gazebo repository
 git clone https://github.com/ArduPilot/ardupilot_gazebo || { echo "Error: Failed to clone ArduPilot Gazebo repository."; exit 1; }
@@ -19,6 +23,7 @@ cd ardupilot_gazebo || { echo: "Error: Failed to navigate to ardupilot_gazebo di
 mkdir -p build && cd build || { echo "Error: Failed to create or navigate to the build directory."; exit 1; }
 
 # Build the project
+export GZ_VERSION = harmonic
 cmake .. -DCMAKE_BUILD_TYPE=RelWithDebInfo || { echo "Error: Failed to run CMake."; exit 1; }
 make -j4 || { echo "Error: Failed to build the project."; exit 1; }
 
