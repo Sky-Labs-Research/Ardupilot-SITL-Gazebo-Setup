@@ -21,12 +21,7 @@ This set of instructions guides you through the installation of Ardupilot and So
    - Test Ardupilot SITL
       ```bash
       # In another console (CTRL+T Opens a new console tab)
-      # Navigate to Ardupilot-SITL-Gazebo-Setup/ardupilot/ArduCopter
-      cd ArduCopter/
-      # Wipe EEPROM
-      sim_vehicle.py -w
-      # Test
-      sim_vehicle.py --console --map
+      sim_vehicle.py -v ArduCopter -w --map --console
       ```
 3. Install Gazebo [Garden/7 or Harmonic/8, see [here](https://gazebosim.org/docs/latest/getstarted/) for which version is compatible with your OS]:
    - Setup Gazebo

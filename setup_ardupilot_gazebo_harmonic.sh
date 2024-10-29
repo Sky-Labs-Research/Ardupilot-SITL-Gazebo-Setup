@@ -4,7 +4,7 @@
 sudo apt update || { echo "Error: Failed to update package list."; exit 1; }
 
 # Install libgz-sim7-dev and rapidjson-dev
-sudo apt install libgz-sim7-dev rapidjson-dev -y || { echo "Error: Failed to install required packages."; exit 1; }
+sudo apt install libgz-sim8-dev rapidjson-dev -y || { echo "Error: Failed to install required packages."; exit 1; }
 sudo apt install libopencv-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad gstreamer1.0-libav gstreamer1.0-gl -y || { echo "Error: Failed to install required packages."; exit 1; }
 
 # Create and navigate to the workspace directory
