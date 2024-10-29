@@ -8,6 +8,7 @@ This set of instructions guides you through the installation of Ardupilot and So
 - Ubuntu 20.04 or 22.04
 - Graphics card recommended
 - git `sudo apt install git`
+- up to date packages `sudo apt-get update && sudo apt-get upgrade -y`
 
 **Instructions:**
 1. Install Ardupilot & SITL:
