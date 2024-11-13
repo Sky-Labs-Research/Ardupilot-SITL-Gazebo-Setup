@@ -75,6 +75,22 @@ This set of instructions guides you through the installation of Ardupilot and So
 - `gz-sim Unable to find or download file` : 
 gazebo is unable to find the installed worlds and models from ardupilot_gazebo. Ensure you exported the paths to bashrc and refresh your terminal environment with `source ~/.bashrc`
 
+**Virtual Box Simulation Speed Tip:**
+
+If running on VirtualBox you can get higher simulation speed by enabling 3D acceleration for the Virtual Machine.
+
+1. Open the Terminal on your machine and navigate to the Virtualbox directory.
+ ```bash
+cd "C:\Program Files\Oracle\Virtualbox"
+```
+2. Modify your virtual machine (In this case "Ubuntu") to use 256 mb VRAM 
+```bash
+vboxmanage modifyvm "Ubuntu" --vram 256
+```
+3. Modify your gazebo start command to use a differnt render engine `--render-engine ogre`
+```bash
+Gz sim -v4 -r --render-engine ogre iris_runway.sdf
+``` 
 
 **References:**
 - Ardupilot setup: [Building Setup for Linux](https://ardupilot.org/dev/docs/building-setup-linux.html#building-setup-linux)
